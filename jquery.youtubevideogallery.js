@@ -7,6 +7,7 @@
                     urlLink : 'http://www.youtube.com/watch?v=$id',
                     urlEmbed : 'http://www.youtube.com/embed/$id',
                     urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
+                    playButton: 'play-button-red@300.png',
                     innerWidth:425,
                     innerHeight:344,
                     showTitle:true,
@@ -25,7 +26,7 @@
                     src = options.urlImg.replace("$id", video.id);
                     titleSpan = (!!video.title && options.showTitle) ? '<span class="youtube-videogallery-title">'+ video.title +'</span>' : '';
 
-                    html+= '<li class="youtube-videogallery-item"><a data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link"><img class="youtube-videogallery-play" src="play-button-red@300.png" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" />'+ titleSpan +'</a></li>';
+                    html+= '<li class="youtube-videogallery-item"><a data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link"><img class="youtube-videogallery-play" src="'+ options.playButton +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" />'+ titleSpan +'</a></li>';
                 }
                 $this.empty().append(html).addClass('youtube-videogallery-container');
                 if ($.colorbox){

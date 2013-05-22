@@ -1,4 +1,4 @@
-** Youtube video gallery
+## Youtube video gallery
 
 This is a very simple plugin to display a group of youtube video links as a gallery.
 

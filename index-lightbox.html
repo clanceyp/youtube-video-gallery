@@ -9,8 +9,19 @@
     <script type="text/javascript" src="http://lokeshdhakar.com/projects/lightbox2/js/lightbox.js"></script>
 </head>
 <body>
-  <h2>Lightbox 2 example</h2>
-
+  <h2>Lightbox2 example</h2>
+    <p>Uses the jquery lightbox2 plugin from lokeshdhakar.com. This plugin doesn't
+    load lightbox2, it uses it if you already have lightbox2 on your site.
+    (at the time of writing lightbox2 didn't work with jquery 1.9)</p>
+  <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'lightbox'} );
+});
+  </pre>
+  <p>
+      NB: If you want to add lightbox functionality and don't already have
+      anything installed, this plugin works very well with
+      colorbox form www.jacklmoore.com.
+  </p>
     <div id="test">
         <h2>Title </h2>
         <ul class="youtube-videogallery">
@@ -36,7 +47,7 @@
 
     <script>
         $(document).ready(function(){
-            $("ul.youtube-videogallery").youtubeVideoGallery( );
+            $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'lightbox'} );
         });
     </script>
 </body>

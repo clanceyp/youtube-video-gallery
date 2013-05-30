@@ -4,18 +4,19 @@
     $.fn.extend({
         youtubeVideoGallery:function(options) {
             var defaults = {
-                    urlLink : 'http://www.youtube.com/watch?v=$id',
-                    urlEmbed : 'http://www.youtube.com/embed/$id',
-                    urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
                     assetFolder : '',
-                    playButton: 'play-button-red@300.png',
-                    newWindow: '(opens in a new window)',
-                    innerWidth:425,
+                    iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
                     innerHeight:344,
+                    innerWidth:425,
+                    newWindow: '(opens in a new window)',
+                    playButton: 'play-button-red@40.png',
                     plugin:'self',
                     showTitle:true,
-                    iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
-                    videos:[]
+                    thumbWidth:150,
+                    videos:[],
+                    urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
+                    urlEmbed : 'http://www.youtube.com/embed/$id',
+                    urlLink : 'http://www.youtube.com/watch?v=$id'
                 };
 
             this.test = {};
@@ -65,6 +66,16 @@
                 $('#youtube-videogallery-iframe').attr( 'src', 'about:blank');
                 $('body').removeClass('youtube-videogallery-active');
             }
+            function setButtonMargin(w, h, context){
+                if (w === 0 || h === 0){
+                    $(context).find("img.youtube-videogallery-play").remove();
+                    return;
+                }
+                $(context).find("img.youtube-videogallery-play").css({
+                    'marginLeft':-w/2 +'px',
+                    'marginTop':-h/2 +'px'
+                });
+            }
 
             this.test = {
                 getBefore:getBefore,
@@ -76,27 +87,35 @@
             function load($this, options) {
                 var videos = ( options.videos.length ) ? options.videos : getVideoLinks($this),
                     html = '',
-                    href, src, titleSpan, video, playButtonSrc;
+                    href, src, titleSpan, video,
+                    playButtonSrc = (!!options.assetFolder) ? options.assetFolder +'/'+ options.playButton : options.playButton ,
+                    img = document.createElement('img');
+                img.onload = function(){
+                    setButtonMargin(this.width, this.height, $this);
+                }
+                img.onerror = function(){
+                    setButtonMargin(0, 0, $this);
+                }
+                img.src = playButtonSrc;
 
                 for (var i = 0, l = videos.length; i < l; i++){
                     video = videos[i];
                     if (!video.id){continue;}
                     href = options.urlLink.replace("$id", video.id);
                     src = options.urlImg.replace("$id", video.id);
-                    playButtonSrc = (!!options.assetFolder) ? options.assetFolder +'/'+ options.playButton : options.playButton ;
                     titleSpan = (!!video.title && options.showTitle) ? '<span class="youtube-videogallery-title">'+ video.title +'</span>' : '';
 
-                    html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" />'+ titleSpan +'</a></li>';
+                    html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link" style="width:'+options.thumbWidth+'px"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" style="width:'+options.thumbWidth+'px" />'+ titleSpan +'</a></li>';
                 }
                 $this.empty().append(html).addClass('youtube-videogallery-container');
-                if (options.plugin === 'colorbox' && $.colorbox){
+                if (options.supported && options.plugin === 'colorbox' && $.colorbox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
                             .attr('href', options.urlEmbed.replace("$id", $(el).attr('data-youtube-id') ) )
                             .attr('aria-controls','youtube-videogallery-iframe')
                             .colorbox({iframe:true, innerWidth:options.innerWidth, innerHeight:options.innerHeight});
                     });
-                } else if (options.plugin === 'lightbox' && $('#lightbox').length){
+                } else if (options.supported && options.plugin === 'lightbox' && $('#lightbox').length){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
                             .attr('href', $(el).find('img.youtube-videogallery-img').attr('src') )
@@ -112,7 +131,7 @@
                         var el = e.currentTarget;
                         $('#youtube-videogallery-iframe').attr( 'src', options.urlEmbed.replace("$id", $(el).attr('data-youtube-id') ) );
                     });
-                } else if (options.plugin === 'self'){
+                } else if (options.supported && options.plugin === 'self'){
                     if (!$('div.youtube-videogallery-bodycover').length){
                         $('body')
                             .append('<div class="youtube-videogallery-bodycover"/>')
@@ -133,12 +152,12 @@
                             $(el).attr('title', $(el).attr('title')+' '+ options.newWindow);
                         });
                 }
-
                 return $this;
 
             }
 
             options =  $.extend(defaults, options);
+            options.supported = !!$().on;
             return this.each(function(i, el){
                 load($(el), options);
             });

@@ -11,12 +11,12 @@
     <title></title>
 </head>
 <body>
-<h1>Default display</h1>
+<h1>Simple, no lightbox effect just pain links to youtube</h1>
 <div id="test">
-    <h2>Video gallery 1</h2>
-    <p>Uses it's own built in basic lightbox display</p>
+    <h2>Video gallery</h2>
+    <p>Doesn't use anything, keeps the existing links and just displays them as a gallery</p>
     <pre>$(document).ready(function(){
-    $("ul.youtube-videogallery").youtubeVideoGallery(  );
+    $("ul.youtube-videogallery1").youtubeVideoGallery( {plugin:'none'} );
 });</pre>
     <ul class="youtube-videogallery2">
         <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
@@ -32,7 +32,7 @@
 
 <script>
     $(document).ready(function(){
-        $("ul.youtube-videogallery").youtubeVideoGallery(  );
+        $("ul.youtube-videogallery2").youtubeVideoGallery( {plugin:'none'} );
     });
 </script>
 </body>

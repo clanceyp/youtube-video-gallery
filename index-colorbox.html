@@ -3,7 +3,11 @@
 <head>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="jquery.youtubevideogallery.js"></script>
-    <link rel="stylesheet" href="youtube-video-gallery.css">
+    <link rel="stylesheet" href="youtube-video-gallery.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="test/test.css" type="text/css" rel="stylesheet">
+    <!--[if IE lt 9]>
+    <link href="youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
     <title></title>
     <link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
     <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
@@ -12,11 +16,11 @@
 <h1>Colour box example</h1>
 <div id="test">
     <h2>Video gallery - using colorbox</h2>
-    <p>Uses colorbox as the plugin param</p>
+    <p>Uses colorbox as the plugin param, you must have included the <a href="http://www.jacklmoore.com/colorbox/">colorbox code</a> in your web page</p>
     <pre>$(document).ready(function(){
     $("ul.youtube-videogallery1").youtubeVideoGallery( {plugin:'colorbox'} );
 });</pre>
-    <ul class="youtube-videogallery">
+    <ul class="youtube-videogallery2">
         <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
         <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
         <li><a href="http://www.youtube.com/watch?v=4psVnsYlBok">Good scooting</a></li>
@@ -24,6 +28,7 @@
         <li><a href="http://www.youtube.com/watch?v=d2xQ8K2VJms">More music</a></li>
         <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
         <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
+        <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
     </ul>
 </div>
 

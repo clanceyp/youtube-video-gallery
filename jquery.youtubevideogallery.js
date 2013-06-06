@@ -5,6 +5,16 @@
         youtubeVideoGallery:function(options) {
             var defaults = {
                     assetFolder : '',
+                    fancybox : {
+                        openEffect : 'none',
+                        closeEffect : 'none',
+
+                        arrows : false,
+                        helpers : {
+                            media : {},
+                            buttons : {}
+                        }
+                    },
                     iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
                     innerHeight:344,
                     innerWidth:425,
@@ -115,21 +125,22 @@
                             .attr('aria-controls','youtube-videogallery-iframe')
                             .colorbox({iframe:true, innerWidth:options.innerWidth, innerHeight:options.innerHeight});
                     });
-                } else if (options.supported && options.plugin === 'lightbox' && $('#lightbox').length){
+                } else if (options.supported && options.plugin === 'fancybox' && !!$().fancybox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
-                            .attr('href', $(el).find('img.youtube-videogallery-img').attr('src') )
-                            .attr('aria-controls','youtube-videogallery-iframe')
-                            .attr('rel','lightbox');
-                    });
-                    $('#lightbox img.lb-image, #lightbox div.lb-nav').css({'position':'absolute','left':'-99999px','top':'-99999px'});
-                    $('#lightbox div.lb-container').append( getIframeTemplate(options.innerWidth, options.innerHeight) );
-                    $('#lightbox, #lightboxOverlay').on('click',function(){
-                        $('#youtube-videogallery-iframe').attr('src','about:blank');
-                    });
-                    $this.delegate('a.youtube-videogallery-link','click',function(e){
-                        var el = e.currentTarget;
-                        $('#youtube-videogallery-iframe').attr( 'src', options.urlEmbed.replace("$id", $(el).attr('data-youtube-id') ) );
+                            .attr('rel', 'media-gallery')
+                            .fancybox({
+                                openEffect : options.fancybox.openEffect,
+                                closeEffect : options.fancybox.closeEffect,
+                                prevEffect : options.fancybox.prevEffect,
+                                nextEffect : options.fancybox.nextEffect,
+
+                                arrows : false,
+                                helpers : {
+                                    media : options.fancybox.helpers.media,
+                                    buttons : options.fancybox.helpers.buttons
+                                }
+                            });
                     });
                 } else if (options.supported && options.plugin === 'self'){
                     if (!$('div.youtube-videogallery-bodycover').length){

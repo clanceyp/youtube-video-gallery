@@ -1,0 +1,26 @@
+{
+	"name": "youtube-video-gallery",
+	"version": "0.0.1",
+	"title": "Youtubo video gallery",
+	"author": {
+		"name": "Patrick Clancey",
+        "email": "clanceyp@gmail.com",
+        "url": "https://github.com/clanceyp"
+	},
+	"licenses": [
+		{
+			"type": "Apache License 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.9"
+	},
+	"description": "An simple video gallery for youtube.",
+	"keywords": [
+		"lightbox",
+		"youtube",
+		"gallery"
+	],
+	"docs": "https://clanceyp.github.io/youtube-video-gallery"
+}

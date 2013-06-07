@@ -22,6 +22,7 @@
                     playButton: 'play-button-red@40.png',
                     plugin:'self',
                     showTitle:true,
+                    style:'',
                     thumbWidth:150,
                     videos:[],
                     urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
@@ -86,6 +87,12 @@
                     'marginTop':-h/2 +'px'
                 });
             }
+            function getStyle(style){
+                if (!!style){
+                    return "youtube-videogallery-" + style;
+                }
+                return '';
+            }
 
             this.test = {
                 getBefore:getBefore,
@@ -117,7 +124,7 @@
 
                     html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link" style="width:'+options.thumbWidth+'px"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" style="width:'+options.thumbWidth+'px" />'+ titleSpan +'</a></li>';
                 }
-                $this.empty().append(html).addClass('youtube-videogallery-container');
+                $this.empty().append(html).addClass('youtube-videogallery-container').addClass(getStyle( options.style ));
                 if (options.supported && options.plugin === 'colorbox' && $.colorbox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)

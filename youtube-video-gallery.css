@@ -13,6 +13,12 @@
 	margin-right: 14px;
 	overflow: hidden;
 }
+*.youtube-videogallery-compact *.youtube-videogallery-item,
+*.youtube-videogallery-compact *.youtube-videogallery-img{
+    box-shadow: 0 0 0;
+    border-radius: 0;
+    margin: 0 0 0 0;
+}
 a.youtube-videogallery-link {
     display: inline-block;
 	position: relative;

@@ -40,12 +40,17 @@ a.youtube-videogallery-link:focus img.youtube-videogallery-play {
 	bottom: 0;
 	color:#000;
 	display: block;
+    max-height: 1.5em;
 	left:0;
     line-height: 150%;
+    overflow: hidden;
 	position: absolute;
 	text-align: center;
 	width: 100%;
 	z-index: 1;
+}
+*.youtube-videogallery-allowtitle *.youtube-videogallery-title {
+    height: auto;
 }
 *.youtube-videogallery-img {
 	border-radius: 5px;

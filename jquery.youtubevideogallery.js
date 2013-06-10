@@ -3,7 +3,8 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var defaults = {
+            var version = '0.0.1',
+                defaults = {
                     assetFolder : '',
                     fancybox : {
                         openEffect : 'none',
@@ -24,6 +25,7 @@
                     showTitle:true,
                     style:'',
                     thumbWidth:150,
+                    titleLimit:true,
                     videos:[],
                     urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
                     urlEmbed : 'http://www.youtube.com/embed/$id',
@@ -31,6 +33,7 @@
                 };
 
             this.test = {};
+            this.version = version;
 
             function getVideoLinks($this){
                 var arr = [],
@@ -49,6 +52,8 @@
                     id = getBefore(href.split('?v=')[1],'&');
                 } else if (!!href && href.indexOf('/embed/') > 0){
                     id = getBefore(href.split('/embed/')[1], '?');
+                } else if (!!href && href.indexOf('video:') > 0){
+                    id = getBefore(href.split('video:')[1], ':');
                 }
                 return id;
             }
@@ -93,6 +98,20 @@
                 }
                 return '';
             }
+            function getTitleStyle(allow){
+                return allow ? 'youtube-videogallery-allowtitle' : '';
+            }
+            function getVideosFromFeed(data){
+                var videos = [],
+                    items = (data && data.feed && data.feed.entry) ? data.feed.entry : [];
+                $( items ).each(function(i, item){
+                    videos.push({
+                        id: getId(item.id.$t),
+                        title: item.title.$t
+                    });
+                });
+                return videos;
+            }
 
             this.test = {
                 getBefore:getBefore,
@@ -100,7 +119,6 @@
                 getVideoLinks:getVideoLinks,
                 getIframeTemplate:getIframeTemplate
             };
-
             function load($this, options) {
                 var videos = ( options.videos.length ) ? options.videos : getVideoLinks($this),
                     html = '',
@@ -124,7 +142,12 @@
 
                     html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link" style="width:'+options.thumbWidth+'px"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" style="width:'+options.thumbWidth+'px" />'+ titleSpan +'</a></li>';
                 }
-                $this.empty().append(html).addClass('youtube-videogallery-container').addClass(getStyle( options.style ));
+                $this.empty()
+                    .append(html)
+                    .addClass('youtube-videogallery-container')
+                    .addClass( getStyle( options.style ) )
+                    .addClass( getTitleStyle( options.titleLimit ) );
+
                 if (options.supported && options.plugin === 'colorbox' && $.colorbox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
@@ -180,6 +203,36 @@
                     !!$().on &&
                     ( $(window).width() > options.innerWidth || $(window).height() > options.innerHeight)
                 );
+            if (!!options.apiUrl){
+                var $this = this,
+                    apiUrl = options.apiUrl,
+                    jqxhr = $.ajax({
+                        url:apiUrl,
+                        beforeSend:function(){
+                            if (!options.apiFallbackUrl){
+                                return;
+                            }
+                            $this.each(function(i, el){
+                                $(el).empty()
+                                    .append('<li><a /></li>')
+                                    .find('a')
+                                    .attr('href', options.apiFallbackUrl)
+                                    .text(options.apiFallbackUrl);
+                            });
+                        }})
+                        .done(function(data) {
+                            options.videos = getVideosFromFeed(data);
+                            $this.each(function(i, el){
+                               load($(el), options);
+                            });
+                        })
+                        .fail(function(){
+                            if ('console' in window && window.console.log){
+                                window.console.log('Error getting youtube API requested by jQuery.youtubeVideoGallery: '+ apiUrl);
+                            }
+                        });
+                return $this;
+            }
             return this.each(function(i, el){
                 load($(el), options);
             });

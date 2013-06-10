@@ -97,6 +97,7 @@
         <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
         <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
         <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
+        <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
     </ul>
 
     <script>
@@ -117,8 +118,18 @@
         <th>Default</th>
         <th>Description</th>
     </tr>
-
-
+    <tr>
+        <th scope="row">apiFallbackUrl</th>
+        <td></td>
+        <td></td>
+        <td>Fallback URL, used in conjunction with apiUrl.</td>
+    </tr>
+    <tr>
+        <th scope="row">apiUrl</th>
+        <td></td>
+        <td></td>
+        <td>Generate youtube gallery form youtube API URL (must be json format, see <a href="https://developers.google.com/youtube/2.0/reference">API docs</a>)</td>
+    </tr>
     <tr>
         <th scope="row">assetFolder</th>
         <td></td>
@@ -183,6 +194,12 @@
         <td></td>
         <td>compact</td>
         <td>Different display options.</td>
+    </tr>
+    <tr>
+        <th scope="row">titleLimit</th>
+        <td>true<br/>false</td>
+        <td>true</td>
+        <td>Truncate title, only allow title to use one line</td>
     </tr>
     <tr>
         <th scope="row">videos</th>

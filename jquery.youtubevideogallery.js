@@ -117,7 +117,10 @@
                 getBefore:getBefore,
                 getId:getId,
                 getVideoLinks:getVideoLinks,
-                getIframeTemplate:getIframeTemplate
+                getIframeTemplate:getIframeTemplate,
+                getTitleStyle:getTitleStyle,
+                getStyle:getStyle,
+                getVideosFromFeed:getVideosFromFeed
             };
             function load($this, options) {
                 var videos = ( options.videos.length ) ? options.videos : getVideoLinks($this),

@@ -1,7 +1,7 @@
 {
-	"name": "youtube-video-gallery",
-	"version": "0.0.1",
-	"title": "Youtubo video gallery",
+	"name": "youtubevideogallery",
+	"version": "0.0.2",
+	"title": "Youtube video gallery",
 	"author": {
 		"name": "Patrick Clancey",
         "email": "clanceyp@gmail.com",

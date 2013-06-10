@@ -92,10 +92,10 @@
                     img = document.createElement('img');
                 img.onload = function(){
                     setButtonMargin(this.width, this.height, $this);
-                }
+                };
                 img.onerror = function(){
                     setButtonMargin(0, 0, $this);
-                }
+                };
                 img.src = playButtonSrc;
 
                 for (var i = 0, l = videos.length; i < l; i++){
@@ -157,7 +157,11 @@
             }
 
             options =  $.extend(defaults, options);
-            options.supported = !!$().on;
+            options.supported = (
+            /* don't show lightbox if: old untested jquery version, or the lightbox is bigger than the viewport */
+                    !!$().on &&
+                    ( $(window).width() > options.innerWidth || $(window).height() > options.innerHeight)
+                );
             return this.each(function(i, el){
                 load($(el), options);
             });

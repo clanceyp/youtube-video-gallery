@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="jquery.youtubevideogallery.js"></script>
+    <link rel="stylesheet" href="youtube-video-gallery.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="test/test.css" type="text/css" rel="stylesheet">
+    <!--[if IE lt 9]>
+    <link href="youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <title></title>
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="http://fancyapps.com/fancybox/source/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://fancyapps.com/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="http://fancyapps.com/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
+
+</head>
+<body>
+<h1>Fancybox example</h1>
+<div id="test">
+    <h2>Video gallery - using fancybox</h2>
+    <p>Uses fancybox as the plugin param, you must have included the <a href="http://fancyapps.com/fancybox/">facnybox code</a>
+        in your web page</p>
+    <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'fancybox'} );
+});</pre>
+    <ul class="youtube-videogallery">
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=4psVnsYlBok">Good scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=05Cgtg_N4eI">Knitting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=d2xQ8K2VJms">More music</a></li>
+        <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
+        <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
+        <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
+    </ul>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'fancybox'} );
+    });
+</script>
+</body>
+</html>

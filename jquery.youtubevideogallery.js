@@ -5,6 +5,16 @@
         youtubeVideoGallery:function(options) {
             var defaults = {
                     assetFolder : '',
+                    fancybox : {
+                        openEffect : 'none',
+                        closeEffect : 'none',
+
+                        arrows : false,
+                        helpers : {
+                            media : {},
+                            buttons : {}
+                        }
+                    },
                     iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
                     innerHeight:344,
                     innerWidth:425,
@@ -12,6 +22,7 @@
                     playButton: 'play-button-red@40.png',
                     plugin:'self',
                     showTitle:true,
+                    style:'',
                     thumbWidth:150,
                     videos:[],
                     urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
@@ -76,6 +87,12 @@
                     'marginTop':-h/2 +'px'
                 });
             }
+            function getStyle(style){
+                if (!!style){
+                    return "youtube-videogallery-" + style;
+                }
+                return '';
+            }
 
             this.test = {
                 getBefore:getBefore,
@@ -107,7 +124,7 @@
 
                     html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link" style="width:'+options.thumbWidth+'px"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" style="width:'+options.thumbWidth+'px" />'+ titleSpan +'</a></li>';
                 }
-                $this.empty().append(html).addClass('youtube-videogallery-container');
+                $this.empty().append(html).addClass('youtube-videogallery-container').addClass(getStyle( options.style ));
                 if (options.supported && options.plugin === 'colorbox' && $.colorbox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
@@ -115,21 +132,22 @@
                             .attr('aria-controls','youtube-videogallery-iframe')
                             .colorbox({iframe:true, innerWidth:options.innerWidth, innerHeight:options.innerHeight});
                     });
-                } else if (options.supported && options.plugin === 'lightbox' && $('#lightbox').length){
+                } else if (options.supported && options.plugin === 'fancybox' && !!$().fancybox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
-                            .attr('href', $(el).find('img.youtube-videogallery-img').attr('src') )
-                            .attr('aria-controls','youtube-videogallery-iframe')
-                            .attr('rel','lightbox');
-                    });
-                    $('#lightbox img.lb-image, #lightbox div.lb-nav').css({'position':'absolute','left':'-99999px','top':'-99999px'});
-                    $('#lightbox div.lb-container').append( getIframeTemplate(options.innerWidth, options.innerHeight) );
-                    $('#lightbox, #lightboxOverlay').on('click',function(){
-                        $('#youtube-videogallery-iframe').attr('src','about:blank');
-                    });
-                    $this.delegate('a.youtube-videogallery-link','click',function(e){
-                        var el = e.currentTarget;
-                        $('#youtube-videogallery-iframe').attr( 'src', options.urlEmbed.replace("$id", $(el).attr('data-youtube-id') ) );
+                            .attr('rel', 'media-gallery')
+                            .fancybox({
+                                openEffect : options.fancybox.openEffect,
+                                closeEffect : options.fancybox.closeEffect,
+                                prevEffect : options.fancybox.prevEffect,
+                                nextEffect : options.fancybox.nextEffect,
+
+                                arrows : false,
+                                helpers : {
+                                    media : options.fancybox.helpers.media,
+                                    buttons : options.fancybox.helpers.buttons
+                                }
+                            });
                     });
                 } else if (options.supported && options.plugin === 'self'){
                     if (!$('div.youtube-videogallery-bodycover').length){

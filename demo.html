@@ -53,7 +53,7 @@
 
 
 
-
+<ul class="youtube-videogallery"></ul>
 
 
 
@@ -74,6 +74,13 @@
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <script>
+      $(document).ready(function(){
+          $("ul.youtube-videogallery").youtubeVideoGallery( {
+              apiFallbackUrl: 'https://www.youtube.com/results?search_query=football-soccer',
+              apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
+           });
+      });
+    </script>
   </body>
 </html>

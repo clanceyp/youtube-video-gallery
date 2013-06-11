@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <title>Youtube-video-gallery by clanceyp</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/youtube-video-gallery.css" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/jquery.youtubevideogallery.js"></script>
+    <!--[if lt IE 9]>
+      <link href="stylesheets/youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Youtube-video-gallery</h1>
+        <p>Simple jquery extension to create a youtube gallery</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/clanceyp/youtube-video-gallery" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/clanceyp/youtube-video-gallery/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/clanceyp/youtube-video-gallery/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+          <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>Youtube video gallery</h1>
+          
+          <p>This is a very simple plugin to display a group of youtube video links as a gallery,
+            
+            assuming you have a unordered list element with the class name 'youtube-videogallery' and you want
+            to display a list of youtube vidoes...
+          </p>
+          <div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"youtube-videogallery"</span><span class="nt">&gt;</span><span class="nt">&lt;/ul&gt;</span>
+          </pre></div>
+          <p>
+            Javascript usage would be...
+          </p>
+          <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+              <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span>
+                <span class="nx">apiFallbackUrl</span><span class="o">:</span><span class="s1">'https://www.youtube.com/results?search_query=dance+tango'</span>,
+                <span class="nx">apiUrl</span><span class="o">:</span><span class="s1">'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=12&v=2'</span>
+              <span class="p">}</span> <span class="p">);</span>
+          <span class="p">});</span>
+          </pre></div>
+          
+          <p>Which would display as...</p>
+          <ul class="youtube-videogallery"></ul>
+
+
+
+
+
+        <h2>License</h2>
+        
+        <p>Youtube video gallery is released under the MIT license.</p>
+        
+        <p><a href="http://www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a></p>
+        
+        <p>Thank you : )</p>
+        
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/clanceyp">clanceyp</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script>
+      $(document).ready(function(){
+          $("ul.youtube-videogallery").youtubeVideoGallery( {
+              apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
+              apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=12&v=2'
+           });
+      });
+    </script>
+  </body>
+</html>

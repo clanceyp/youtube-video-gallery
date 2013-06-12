@@ -53,89 +53,17 @@
     </nav>
       <section>
         <h1>
-          <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>Youtube video gallery</h1>
+          <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>
+           Settings
+        </h1>
           
           
           
           
           
           
-          
-          
-          
-        <p>
-    Released under the
-    <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
-    Source on <a href="https://github.com/clanceyp/youtube-video-gallery">Github</a>.<br>
-    Compatible with: jQuery 1.9.1+
-</p>
-<h2>Overview</h2>
-<p>Converts a list of Youtube links into a gallery. It displays the video player in a lightbox or just
-    plain links if required. It can also use the
-    <a href="http://www.jacklmoore.com/colorbox/">colorbox</a> or
-    <a href="http://fancyapps.com/fancybox/">fancybox</a>
-    plugin to display the video players nicely.
-</p>
-<h2>Features</h2>
-<ul>
-    <li>Supports Youtube links</li>
-    <li>Lightweight: 4KB of JavaScript (less than 1KBs gzipped)</li>
-    <li>Unobtrusive, requires no changes to existing HTML.</li>
-    <li>CSS can be restyled</li>
-    <li>Many configurable options</li>
-</ul>
 
-<h2>Usage</h2>
-<p>The most basic implementation will take an existing unordered list and display it as a gallery.
-
-Make sure you have added the following to the head of your webpage</p>
-<pre id="pre-example-01"></pre>
-<textarea id="example-01">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="jquery.youtubevideogallery.js"></script>
-    <link rel="stylesheet" href="youtube-video-gallery.css" type="text/css" rel="stylesheet">
-    <!--[if IE lt 9]>
-    <link href="youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
-    <![endif]-->
-</textarea>
-<p>The content could be a simple list of links and a line of javascript...</p>
-<pre id="pre-example-02"></pre>
-        <textarea id="example-02">
-<ul class="youtube-video-gallery">
-    <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
-    <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
-    <li><a href="http://www.youtube.com/watch?v=4psVnsYlBok">Good scooting</a></li>
-    <li><a href="http://www.youtube.com/watch?v=05Cgtg_N4eI">Knitting</a></li>
-    <li><a href="http://www.youtube.com/watch?v=xPr4g7o46DY">Sunrise yoga</a></li>
-    <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
-    <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
-    <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
-    <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
-</ul>
-
-<script>
-    $(document).ready(function(){
-        $("ul.youtube-video-gallery").youtubeVideoGallery(  );
-    });
-</script></textarea>
-
-
-
-    <p>To load a gallery from a youtube API</p>
-
-<pre id="pre-example-03"></pre>
-<textarea id="example-03">
-    <ul class="youtube-video-gallery"></ul>
-
-    <script>
-        $(document).ready(function(){
-            $("ul.youtube-videogallery2").youtubeVideoGallery({
-                apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
-                apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
-            });
-        });
-    </script></textarea>
-<h2>Settings</h2>
+<h2>Properties</h2>
 <table id="table">
     <tbody>
 
@@ -264,20 +192,7 @@ Make sure you have added the following to the head of your webpage</p>
           
           
           
-          
-          
-          
 
-
-
-
-        <h2>License</h2>
-        
-        <p>Youtube video gallery is released under the MIT license.</p>
-        
-        <p><a href="http://www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a></p>
-        
-        <p>Thank you : )</p>
         
       </section>
       <footer>
@@ -287,12 +202,7 @@ Make sure you have added the following to the head of your webpage</p>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     <script>
-          $(document).ready(function(){
-              $("ul.youtube-videogallery").youtubeVideoGallery( {
-                  apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
-                  apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=12&v=2'
-               });
-          });
+
           $(document).ready(function(){
               $('textarea').each(function(i, el){
                   $('#pre-'+ $(el).attr('id')).attr("data-language","html").html(

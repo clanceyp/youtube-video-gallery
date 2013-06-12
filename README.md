@@ -2,14 +2,14 @@
 
 This is a very simple plugin to display a group of youtube video links as a gallery.
 
-If you are using the colorbox plugin this extension will use it and display the videos in a light box.
+If you are using the colorbox or fancybox plugins, this extension will use it and display the videos in a light box.
 
 
 ## API
 
 ### Usage
 
-Assuming your unordered list looks something like this...
+You can load Youtube videos from a json, or directly from an unordered list e.g...
 ```xml
 <ul class="youtube-videogallery">
     <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
@@ -19,8 +19,11 @@ Assuming your unordered list looks something like this...
     <li><a href="http://www.youtube.com/watch?v=d2xQ8K2VJms">More music</a></li>
     <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
     <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
+    <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
 </ul>
 ```
+To convert the above into
+
 ```javascript
 $(document).ready(function(){
     $("ul.youtube-videogallery").youtubeVideoGallery(  );

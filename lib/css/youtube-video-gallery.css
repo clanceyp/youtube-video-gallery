@@ -33,6 +33,9 @@ a.youtube-videogallery-link:focus img.youtube-videogallery-play {
 	position: absolute;
 	top:50%;
 	z-index: 1;
+
+    transition: opacity 300ms linear;
+    -webkit-transition: opacity 300ms linear;
 }
 *.youtube-videogallery-title {
 	background-color: rgb(255,255,255);

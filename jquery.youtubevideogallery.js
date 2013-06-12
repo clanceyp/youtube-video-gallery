@@ -54,6 +54,8 @@
                     id = getBefore(href.split('/embed/')[1], '?');
                 } else if (!!href && href.indexOf('video:') > 0){
                     id = getBefore(href.split('video:')[1], ':');
+                } else if (!!href){
+                    id = href;
                 }
                 return id;
             }
@@ -103,11 +105,11 @@
             }
             function getVideosFromFeed(data){
                 var videos = [],
-                    items = (data && data.feed && data.feed.entry) ? data.feed.entry : [];
+                    items = (data && data.feed && data.feed.entry) ? data.feed.entry : (data && data.data && data.data.items) ? data.data.items : [];
                 $( items ).each(function(i, item){
                     videos.push({
-                        id: getId(item.id.$t),
-                        title: item.title.$t
+                        id: getId(item.id.$t || item.id),
+                        title: item.title.$t || item.title
                     });
                 });
                 return videos;

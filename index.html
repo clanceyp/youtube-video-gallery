@@ -16,7 +16,7 @@
     <link href="https://raw.github.com/clanceyp/youtube-video-gallery/0.0.2/youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
     <![endif]-->
     <title>Youtube-video-gallery by clanceyp</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/styles.css?nsthntSS">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <link rel="stylesheet" href="stylesheets/rainbow.css">
     <script src="javascripts/main.js"></script>
@@ -25,14 +25,6 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <style>
-        li.related-page {
-            text-align: left;
-            padding-left: 30px;
-        }
-        h1 span {
-            left: -9999px;
-            position: absolute;
-        }
     </style>
   </head>
   <body>
@@ -60,7 +52,7 @@
           <ul>
               <li class="related-page"><a href="index.html">Introduction page</a></li>
               <li class="related-page"><a href="docs.html">Documents page</a></li>
-              <li class="related-page"><a href="demo.html">Demo page</a></li>
+              <li class="related-page section"><a href="demo.html">Demo page</a></li>
           </ul>
       </nav>
       <section>
@@ -68,6 +60,10 @@
             <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>
             General introduction
         </h1>
+          <p>
+              The youtube-video-gallery plugin for jquery is a lightweight plugin to display
+              a list of Youtube links as a gallery.
+          </p>
           <p>
               Released under the
               <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
@@ -83,9 +79,9 @@
           </p>
           <h2>Features</h2>
           <ul>
-              <li>Supports Youtube links</li>
+              <li>Supports Youtube links, or Youtube JSON API</li>
               <li>Lightweight: 4KB of JavaScript (less than 1KBs gzipped)</li>
-              <li>Unobtrusive, requires no changes to existing HTML.</li>
+              <li>Unobtrusive, requires no changes to existing HTML</li>
               <li>CSS can be restyled</li>
               <li>Many configurable options</li>
           </ul>

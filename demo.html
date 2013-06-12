@@ -26,6 +26,14 @@
     <script type="text/javascript" src="http://fancyapps.com/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
     <script type="text/javascript" src="http://fancyapps.com/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5"></script>
 
+
+
+
+    <!-- add colorbox -->
+    <link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
+    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
+
+
   </head>
   <body>
 
@@ -73,22 +81,21 @@
   <ul class="youtube-video-gallery">
       <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
       <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
-      <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
       <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
   </ul>
 
   <script>
       $(document).ready(function(){
-          $("ul.youtube-videogallery2").youtubeVideoGallery({
-              apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
-              apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
-          });
+          $("ul.youtube-videogallery").youtubeVideoGallery( );
       });
   </script></textarea>
           
           <p>Which would display as...</p>
-          <ul class="youtube-videogallery"></ul>
-
+          <ul class="youtube-video-gallery-simple">
+              <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+              <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
+              <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
+          </ul>
 
 
 
@@ -151,12 +158,33 @@
 
 
 
+<h2>Using Youtube API</h2>
+<p>Using a youtube API url, your request must be for JSON formatted response, and
+you should include an API fallback URL, this should link to a page on Youtube
+where the videos can be viewed</p>
 
 
 
+<pre id="pre-example-api"></pre>
+<textarea id="example-api">
+  <ul class="youtube-video-gallery">
+  </ul>
+
+  <script>
+      $(document).ready(function(){
+          $("ul.youtube-videogallery").youtubeVideoGallery({
+              apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
+              apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
+          });
+      });
+  </script></textarea>
 
 
 
+          <p>Which displays as </p>
+          <ul class="youtube-videogallery-api">
+          </ul>
+          <div class="clearfix"></div>
 
 
 
@@ -174,18 +202,23 @@
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     <script>
       $(document).ready(function(){
-          $("ul.youtube-videogallery").youtubeVideoGallery( {
+          $("ul.youtube-video-gallery-simple").youtubeVideoGallery( );
+
+          $("ul.youtube-videogallery-api").youtubeVideoGallery( {
               apiFallbackUrl: 'https://www.youtube.com/results?search_query=dance+tango',
               apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=6&v=2'
            });
+
           $("ul.youtube-videogallery-fancybox").youtubeVideoGallery({
               plugin:'fancybox',
               playButton:'play-button-green@40.png'
           });
+
           $("ul.youtube-videogallery-colorbox").youtubeVideoGallery({
               plugin:'colorbox',
               playButton:'play-button-blue@40.png'
           });
+
       });
       $(document).ready(function(){
           $('textarea').each(function(i, el){

@@ -8,27 +8,37 @@
     <title>Youtube-video-gallery introduction</title>
     <meta name="description" content="Youtube video gallery plugin for jqurey introduction">
 
-      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://raw.github.com/clanceyp/youtube-video-gallery/0.0.2/jquery.youtubevideogallery.js"></script>
     <link rel="stylesheet" href="https://raw.github.com/clanceyp/youtube-video-gallery/0.0.2/youtube-video-gallery.css" type="text/css"/>
-    <link rel="stylesheet" href="test/test.css" type="text/css"/>
+
     <!--[if IE lt 9]>
     <link href="https://raw.github.com/clanceyp/youtube-video-gallery/0.0.2/youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
     <![endif]-->
     <title>Youtube-video-gallery by clanceyp</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/rainbow.css">
     <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <style>
+        li.related-page {
+            text-align: left;
+            padding-left: 30px;
+        }
+        h1 span {
+            left: -9999px;
+            position: absolute;
+        }
+    </style>
   </head>
   <body>
 
       <header>
-        <h1>Youtube-video-gallery</h1>
+        <h1>Youtube-video-gallery <span>introduction</span></h1>
         <p>Simple jquery extension to create a youtube gallery</p>
       </header>
 
@@ -47,10 +57,10 @@
 
     <div class="wrapper">
       <nav>
-          <ul class="related-pages">
-              <li><a href="index.html">Introduction page</a></li>
-              <li><a href="docs.html">Documents page</a></li>
-              <li><a href="demo.html">Demo page</a></li>
+          <ul>
+              <li class="related-page"><a href="index.html">Introduction page</a></li>
+              <li class="related-page"><a href="docs.html">Documents page</a></li>
+              <li class="related-page"><a href="demo.html">Demo page</a></li>
           </ul>
       </nav>
       <section>
@@ -58,191 +68,48 @@
             <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>
             General introduction
         </h1>
+          <p>
+              Released under the
+              <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+              Source on <a href="https://github.com/clanceyp/youtube-video-gallery">Github</a>.<br>
+              Compatible with: jQuery 1.9.1+
+          </p>
+          <h2>Overview</h2>
+          <p>Converts a list of Youtube links into a gallery. It displays the video player in a lightbox or just
+              plain links if required. It can also use the
+              <a href="http://www.jacklmoore.com/colorbox/">colorbox</a> or
+              <a href="http://fancyapps.com/fancybox/">fancybox</a>
+              plugin to display the video players nicely.
+          </p>
+          <h2>Features</h2>
+          <ul>
+              <li>Supports Youtube links</li>
+              <li>Lightweight: 4KB of JavaScript (less than 1KBs gzipped)</li>
+              <li>Unobtrusive, requires no changes to existing HTML.</li>
+              <li>CSS can be restyled</li>
+              <li>Many configurable options</li>
+          </ul>
 
-<p>This is a very simple plugin to display a group of youtube video links as a gallery.</p>
+          <h2>Quick start</h2>
+          <p>See the 'usage' section on the <a href="docs.html">documents page</a></p>
 
-<p>If you are using the colorbox plugin this extension will use it and display the videos in a light box.</p>
 
-<h2>
-<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
 
-<h3>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<p>Assuming your unordered list looks something like this...</p>
+          <h2>Demo</h2>
+          <p>See the <a href="demo.html">demo page</a></p>
 
-<div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"youtube-videogallery"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=UCOC1YwNwZw"</span><span class="nt">&gt;</span>Call me gordie<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=CjgT8Af1kGc"</span><span class="nt">&gt;</span>Bad scooting<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=4psVnsYlBok"</span><span class="nt">&gt;</span>Good scooting<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=05Cgtg_N4eI"</span><span class="nt">&gt;</span>Knitting<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=d2xQ8K2VJms"</span><span class="nt">&gt;</span>More music<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=pocEg6a6ZpM"</span><span class="nt">&gt;</span>YUI Roundtable<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"http://www.youtube.com/watch?v=ishBOmjHoXE"</span><span class="nt">&gt;</span>Sporting moments<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</pre></div>
+          <h2>Documentation and settings</h2>
+          <p>See the <a href="docs.html">documents page</a></p>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span>  <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
 
-<h3>
-<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>Settings</h3>
+            <h2>License</h2>
 
-<p>Available settings</p>
+            <p>Link Audit is released under the MIT license.</p>
 
-<div class="highlight"><pre><span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">assetFolder</span> <span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
-    <span class="nx">iframeTemplate</span><span class="o">:</span><span class="s1">'&lt;iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" /&gt;'</span><span class="p">,</span>
-    <span class="nx">innerHeight</span><span class="o">:</span><span class="mi">344</span><span class="p">,</span>
-    <span class="nx">innerWidth</span><span class="o">:</span><span class="mi">425</span><span class="p">,</span>
-    <span class="nx">newWindow</span><span class="o">:</span> <span class="s1">'(opens in a new window)'</span><span class="p">,</span>
-    <span class="nx">playButton</span><span class="o">:</span> <span class="s1">'play-button-red@300.png'</span><span class="p">,</span>
-    <span class="nx">plugin</span><span class="o">:</span><span class="s1">'self'</span><span class="p">,</span>
-    <span class="nx">showTitle</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
-    <span class="nx">videos</span><span class="o">:</span><span class="p">[],</span>
-    <span class="nx">urlEmbed</span> <span class="o">:</span> <span class="s1">'http://www.youtube.com/embed/$id'</span><span class="p">,</span>
-    <span class="nx">urlImg</span> <span class="o">:</span> <span class="s1">'http://img.youtube.com/vi/$id/0.jpg'</span><span class="p">,</span>
-    <span class="nx">urlLink</span> <span class="o">:</span> <span class="s1">'http://www.youtube.com/watch?v=$id'</span>
-<span class="p">}</span>
-</pre></div>
+            <p><a href="http://www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a></p>
 
-<h4>
-<a name="assetfolder" class="anchor" href="#assetfolder"><span class="octicon octicon-link"></span></a>assetFolder</h4>
-
-<p>default: ''</p>
-
-<p>folder where the play button image can be found</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">assetFolder</span><span class="o">:</span><span class="s1">'/img'</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="iframetemplate" class="anchor" href="#iframetemplate"><span class="octicon octicon-link"></span></a>iframeTemplate</h4>
-
-<p>default: ''
-if you overwrite this, insure you retain the <a href="https://github.com/id" class="user-mention">@id</a>, the options.innerHeight and options.innerWidth values</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">iframeTemplate</span><span class="o">:</span><span class="s1">'[my-template]'</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="innerheight" class="anchor" href="#innerheight"><span class="octicon octicon-link"></span></a>innerHeight</h4>
-
-<p>default: 344</p>
-
-<h4>
-<a name="innerwidth" class="anchor" href="#innerwidth"><span class="octicon octicon-link"></span></a>innerWidth</h4>
-
-<p>default: 425</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">innerHeight</span><span class="o">:</span><span class="mi">688</span><span class="p">,</span> <span class="nx">innerWidth</span><span class="o">:</span><span class="mi">850</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="newwindow" class="anchor" href="#newwindow"><span class="octicon octicon-link"></span></a>newWindow</h4>
-
-<p>default: '(opens in a new window)'</p>
-
-<p>This is used appended to the links if no plugin is being used.</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">newWindow</span><span class="o">:</span><span class="s1">'(Buɗe da sabon taga)'</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="playbutton" class="anchor" href="#playbutton"><span class="octicon octicon-link"></span></a>playButton</h4>
-
-<p>default: '<a href="mailto:play-button-red@300.png">play-button-red@300.png</a>'</p>
-
-<p>use in conjunction with assetFolder</p>
-
-<h3>
-<a name="plugin" class="anchor" href="#plugin"><span class="octicon octicon-link"></span></a>plugin</h3>
-
-<p>default: 'self'</p>
-
-<p>Supports</p>
-
-<ul>
-<li>'none' draws the gallery but retains the direct links to Youtube</li>
-<li>'colorbox' uses the colorbox plugin from <a href="http://www.jacklmoore.com">www.jacklmoore.com</a>
-</li>
-</ul><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">plugin</span><span class="o">:</span><span class="s1">'colorbox'</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="showtitle" class="anchor" href="#showtitle"><span class="octicon octicon-link"></span></a>showTitle</h4>
-
-<p>default: true</p>
-
-<p>Set to false to prevent title from showing</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">showTitle</span><span class="o">:</span> <span class="kc">false</span><span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h4>
-<a name="videos" class="anchor" href="#videos"><span class="octicon octicon-link"></span></a>videos</h4>
-
-<p>default: []</p>
-
-<p>To load a list of videos from a javascript array</p>
-
-<div class="highlight"><pre><span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s1">'video-id'</span><span class="p">,</span>
-    <span class="nx">title</span><span class="o">:</span> <span class="s1">'video title'</span>
-<span class="p">}</span>
-<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span><span class="nx">videos</span><span class="o">:</span> <span class="p">[</span><span class="nx">video</span><span class="p">,</span> <span class="nx">video</span><span class="p">,</span> <span class="nx">video</span><span class="p">]}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<h3>
-<a name="urlembed" class="anchor" href="#urlembed"><span class="octicon octicon-link"></span></a>urlEmbed</h3>
-
-<p>default: '<a href="http://www.youtube.com/embed/%24id">http://www.youtube.com/embed/$id</a>'
-If you edit this retain the $id variable</p>
-
-<h3>
-<a name="urlimg" class="anchor" href="#urlimg"><span class="octicon octicon-link"></span></a>urlImg</h3>
-
-<p>default: '<a href="http://img.youtube.com/vi/%24id/0.jpg">http://img.youtube.com/vi/$id/0.jpg</a>'
-If you edit this retain the $id variable</p>
-
-<h3>
-<a name="urllink" class="anchor" href="#urllink"><span class="octicon octicon-link"></span></a>urlLink</h3>
-
-<p>default:  '<a href="http://www.youtube.com/watch?v=%24id">http://www.youtube.com/watch?v=$id</a>'
-If you edit this retain the $id variable</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span>
-        <span class="nx">urlImg</span> <span class="o">:</span> <span class="s1">'http://img.youtube.com/vi/$id/0.jpg'</span><span class="p">,</span>
-        <span class="nx">urlEmbed</span> <span class="o">:</span> <span class="s1">'http://www.youtube.com/embed/$id'</span><span class="p">,</span>
-        <span class="nx">urlLink</span> <span class="o">:</span> <span class="s1">'http://www.youtube.com/watch?v=$id'</span>
-    <span class="p">}</span> <span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
-
-<p>License</p>
-
-<p>Link Audit is released under the MIT license.</p>
-
-<p><a href="http://www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a></p>
-
-<p>Thank you : )</p>
+            <p>Thank you : )</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/clanceyp">clanceyp</a></p>
@@ -250,6 +117,20 @@ If you edit this retain the $id variable</p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <script>
+      $(document).ready(function(){
+          $('textarea').each(function(i, el){
+            $('#pre-'+ $(el).attr('id')).attr("data-language","html").html(
+                $(el).val().replace(/</g,'&lt;')
+            )
+          })
+          $('body').addClass('loaded');
+      })
+      </script>
+      <script src="http://cdn.craig.is/js/rainbow/rainbow.min.js"></script>
+      <script src="http://cdn.craig.is/js/rainbow/language/css.js"></script>
+      <script src="http://cdn.craig.is/js/rainbow/language/generic.js"></script>
+      <script src="http://cdn.craig.is/js/rainbow/language/javascript.js"></script>
+      <script src="http://cdn.craig.is/js/rainbow/language/html.js"></script>
   </body>
 </html>

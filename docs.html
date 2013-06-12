@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,27 +46,215 @@
         <h1>
           <a name="youtube-video-gallery" class="anchor" href="#youtube-video-gallery"><span class="octicon octicon-link"></span></a>Youtube video gallery</h1>
           
-          <p>This is a very simple plugin to display a group of youtube video links as a gallery,
-            
-            assuming you have a unordered list element with the class name 'youtube-videogallery' and you want
-            to display a list of youtube vidoes...
-          </p>
-          <div class="highlight"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"youtube-videogallery"</span><span class="nt">&gt;</span><span class="nt">&lt;/ul&gt;</span>
-          </pre></div>
-          <p>
-            Javascript usage would be...
-          </p>
-          <div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-              <span class="nx">$</span><span class="p">(</span><span class="s2">"ul.youtube-videogallery"</span><span class="p">).</span><span class="nx">youtubeVideoGallery</span><span class="p">(</span> <span class="p">{</span>
-                <span class="nx">apiFallbackUrl</span><span class="o">:</span><span class="s1">'https://www.youtube.com/results?search_query=dance+tango'</span>,
-                <span class="nx">apiUrl</span><span class="o">:</span><span class="s1">'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=12&v=2'</span>
-              <span class="p">}</span> <span class="p">);</span>
-          <span class="p">});</span>
-          </pre></div>
           
-          <p>Which would display as...</p>
-          <ul class="youtube-videogallery"></ul>
+          
+          
+          
+          
+          
+          
+          
+        <p>
+    Released under the
+    <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+    Source on <a href="https://github.com/clanceyp/youtube-video-gallery">Github</a>.<br>
+    Compatible with: jQuery 1.9.1+
+</p>
+<h2>Overview</h2>
+<p>Converts a list of Youtube links into a gallery. It displays the video player in a lightbox or just
+    plain links if required. It can also use the
+    <a href="http://www.jacklmoore.com/colorbox/">colorbox</a> or
+    <a href="http://fancyapps.com/fancybox/">fancybox</a>
+    plugin to display the video players nicely.
+</p>
+<h2>Features</h2>
+<ul>
+    <li>Supports Youtube links</li>
+    <li>Lightweight: 4KB of JavaScript (less than 1KBs gzipped)</li>
+    <li>Unobtrusive, requires no changes to existing HTML.</li>
+    <li>CSS can be restyled</li>
+    <li>Many configurable options</li>
+</ul>
 
+<h2>Usage</h2>
+<p>intro</p>
+<pre id="pre-example-01"></pre>
+<textarea id="example-01"><!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="jquery.youtubevideogallery.js"></script>
+    <link rel="stylesheet" href="youtube-video-gallery.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="test/test.css" type="text/css" rel="stylesheet">
+    <!--[if IE lt 9]>
+    <link href="youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <title></title>
+</head>
+<body>
+    <h1>Default display</h1>
+
+    <ul class="youtube-video-gallery">
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=CjgT8Af1kGc">Bad scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=4psVnsYlBok">Good scooting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=05Cgtg_N4eI">Knitting</a></li>
+        <li><a href="http://www.youtube.com/watch?v=xPr4g7o46DY">Sunrise yoga</a></li>
+        <li><a href="http://www.youtube.com/watch?v=pocEg6a6ZpM">YUI Roundtable</a></li>
+        <li><a href="http://www.youtube.com/watch?v=ishBOmjHoXE">Sporting moments</a></li>
+        <li><a href="http://www.youtube.com/watch?v=j_OyHUqIIOU">Big red balloon</a></li>
+        <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+            $("ul.youtube-video-gallery").youtubeVideoGallery(  );
+        });
+    </script>
+</body>
+</html></textarea>
+
+<h2>Settings</h2>
+<table id="table">
+    <tbody>
+
+    <tr class="header">
+        <th>Property</th>
+        <th>Supported values</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th scope="row">apiFallbackUrl</th>
+        <td></td>
+        <td></td>
+        <td>Fallback URL, used in conjunction with apiUrl.</td>
+    </tr>
+    <tr>
+        <th scope="row">apiUrl</th>
+        <td></td>
+        <td></td>
+        <td>Generate youtube gallery form youtube API URL (must be json format, see <a href="https://developers.google.com/youtube/2.0/reference">API docs</a>)</td>
+    </tr>
+    <tr>
+        <th scope="row">assetFolder</th>
+        <td></td>
+        <td></td>
+        <td>The folder where the play button graphic is located</td>
+    </tr>
+    <tr>
+        <th scope="row">fancybox</th>
+        <td></td>
+        <td></td>
+        <td>If you are using the fancybox plugin, you can pass in the fancybox settings. See <a href="http://fancyapps.com/fancybox/">fancybox</a> for more info.</td>
+    </tr>
+    <tr>
+        <th scope="row">iframeTemplate</th>
+        <td></td>
+        <td>&lt;iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank"&gt;&lt;/iframe&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">innerHeight</th>
+        <td></td>
+        <td>344</td>
+        <td>Height of the video, if using a lightbox</td>
+    </tr>
+    <tr>
+        <th scope="row">innerWidth</th>
+        <td></td>
+        <td>425</td>
+        <td>Width of the video, if using a lightbox</td>
+    </tr>
+    <tr>
+        <th scope="row">newWindow</th>
+        <td></td>
+        <td>(opens in a new window)</td>
+        <td>Message to append to links if not using a lightbox</td>
+    </tr>
+    <tr>
+        <th scope="row">playButton</th>
+        <td></td>
+        <td>play-button-red@40.png</td>
+        <td>The name of the play button image which should be in the folder specified by the assetFolder propertie</td>
+    </tr>
+    <tr>
+        <th scope="row">plugin</th>
+        <td>colorbox<br/>fancybox<br/>self<br/>none</td>
+        <td>self</td>
+        <td>
+            The default setting creates a basic lightbox. <br/>
+            Use <a href="http://www.jacklmoore.com/colorbox/">colorbox</a> to create a nice, customisable lightbox.
+            <br/>
+            Set to 'none' to preserve the direct links to youtube.
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">showTitle</th>
+        <td>true<br/>false</td>
+        <td>true</td>
+        <td>Determines if titles should be shown</td>
+    </tr>
+    <tr>
+        <th scope="row">style</th>
+        <td></td>
+        <td>compact</td>
+        <td>Different display options.</td>
+    </tr>
+    <tr>
+        <th scope="row">titleLimit</th>
+        <td>true<br/>false</td>
+        <td>true</td>
+        <td>Truncate title, only allow title to use one line</td>
+    </tr>
+    <tr>
+        <th scope="row">videos</th>
+        <td></td>
+        <td></td>
+        <td>Array of objects containing id and title. Use if you want to create a gallery from JSON</td>
+    </tr>
+    <tr>
+        <th scope="row">urlEmbed</th>
+        <td></td>
+        <td>http://www.youtube.com/embed/$id</td>
+        <td>Link to youtube embed url</td>
+    </tr>
+    <tr>
+        <th scope="row">urlImg</th>
+        <td></td>
+        <td>http://img.youtube.com/vi/$id/0.jpg</td>
+        <td>Link used to create the gallery image. To use bespoke images
+        put them on your server and use the video ID in the URL.</td>
+    </tr>
+    <tr>
+        <th scope="row">urlLink</th>
+        <td></td>
+        <td>http://www.youtube.com/watch?v=$id</td>
+        <td>Default youtube link url</td>
+    </tr></tbody>
+</table>
+
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('textarea').each(function(i, el){
+            $('#pre-'+ $(el).attr('id')).html(
+               $(el).val().replace(/</g,'&lt;')
+            )
+        })
+        $('body').addClass('loaded');
+    })
+</script>  
+          
+          
+          
+          
+          
+          
+          
 
 
 

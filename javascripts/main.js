@@ -13,13 +13,18 @@ var sectionHeight = function() {
 $(window).resize(sectionHeight);
 
 $(document).ready(function(){
+  var pagename = location.pathname.replace('/youtube-video-gallery/','');
+  if (!pagename){
+      pagename = 'index.html';
+  }
+  $('li>a[href="'+pagename+'"]').parent('li').addClass('active');
   $("section h1, section h2").each(function(){
-    $("nav ul").append("<li class='tag-" + this.nodeName.toLowerCase() + "'><a href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'') + "'>" + $(this).text() + "</a></li>");
+    $("nav ul").append("<li class='internal tag-" + this.nodeName.toLowerCase() + "'><a href='#" + $(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'') + "'>" + $(this).text() + "</a></li>");
     $(this).attr("id",$(this).text().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,''));
-    $("nav ul li:first-child a").parent().addClass("active");
+    //$("nav ul li:first-child a").parent().addClass("active");
   });
   
-  $("nav ul li").on("click", "a", function(event) {
+  $("nav ul li.internal").on("click", "a", function(event) {
     var position = $($(this).attr("href")).offset().top - 190;
     $("html, body").animate({scrollTop: position}, 400);
     $("nav ul li a").parent().removeClass("active");

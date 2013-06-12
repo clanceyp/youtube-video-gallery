@@ -1,6 +1,6 @@
 {
 	"name": "youtubevideogallery",
-	"version": "0.0.3",
+	"version": "1.0.0",
 	"title": "Youtube video gallery",
     "description": "An simple video gallery for youtube.",
 	"author": {
@@ -23,5 +23,6 @@
 		"gallery"
 	],
 	"docs": "http://clanceyp.github.io/youtube-video-gallery/docs.html",
-    "demo": "http://clanceyp.github.io/youtube-video-gallery/"
+    "demo": "http://clanceyp.github.io/youtube-video-gallery/demo.html",
+    "homepage": "http://clanceyp.github.io/youtube-video-gallery/"
 }

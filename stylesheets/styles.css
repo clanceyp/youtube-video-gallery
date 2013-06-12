@@ -1008,3 +1008,42 @@ footer {
     width: auto;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+li.related-page {
+    text-align: left;
+}
+li.related-page a {
+    background: no-repeat url("../images/bullet.png") 100% 50%;
+    padding-right: 10px;
+}
+li.related-page a:hover,
+li.related-page a:focus {
+    text-decoration: underline;
+}
+li.active a {
+    background: none;
+    color: black!important;
+    cursor: default;
+    text-decoration: none!important;
+}
+li.section {
+    border-bottom: 1px dashed #888;
+    margin-bottom:12px;
+    padding-bottom: 12px;
+}
+h1 span {
+    left: -9999px;
+    position: absolute;
+}

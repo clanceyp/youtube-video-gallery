@@ -18,14 +18,14 @@
                 defaults = {
                     assetFolder : '',
                     fancybox : {
-                        openEffect : 'fade',
-                        closeEffect : 'fade',
-
                         arrows : false,
+                        closeBtn : true,
+                        closeEffect : 'fade',
                         helpers : {
                             media : {},
                             buttons : {}
-                        }
+                        },
+                        openEffect : 'fade'
                     },
                     iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
                     innerHeight:344,
@@ -207,18 +207,7 @@
                     $this.find("a.youtube-videogallery-link").each(function(i, el){
                         $(el)
                             .attr('rel', 'media-gallery')
-                            .fancybox({
-                                openEffect : options.fancybox.openEffect,
-                                closeEffect : options.fancybox.closeEffect,
-                                prevEffect : options.fancybox.prevEffect,
-                                nextEffect : options.fancybox.nextEffect,
-
-                                arrows : false,
-                                helpers : {
-                                    media : options.fancybox.helpers.media,
-                                    buttons : options.fancybox.helpers.buttons
-                                }
-                            });
+                            .fancybox(options.fancybox);
                     });
                 } else if (options.supported && options.plugin === 'self'){
                     if (!$('div.youtube-videogallery-bodycover').length){

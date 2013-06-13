@@ -4,7 +4,7 @@
  *
  * @author clanceyp
  * @see http://plugins.jquery.com/youtubevideogallery/
- * @version 1.2.0
+ * @version 1.2.1
  *
  */
 
@@ -14,7 +14,7 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '1.2.0',
+            var version = '1.2.1',
                 defaults = {
                     assetFolder : '',
                     fancybox : {
@@ -46,6 +46,11 @@
             this.test = {};
             this.version = version;
 
+            function log(message){
+                if ('console' in window && window.console.log){
+                    window.console.log(message);
+                }
+            }
             function getVideoLinks($this){
                 var arr = [],
                     a = $this.find("a");
@@ -57,12 +62,29 @@
                 });
                 return arr;
             }
+            function getIdFromEntry(obj){
+                if (typeof obj === 'string'){
+                    return getId(obj);
+                } else if (obj.id && typeof obj.id === 'string'){
+                    return obj.id;
+                } else if (obj.link && obj.link.length ){
+                    for ( var i = 0, l = obj.link.length; i < l ; i++){
+                        if (obj.link[i].type === 'text/html'){
+                            return getId(obj.link[i].href)
+                        }
+                    }
+                }
+                log('could not find ID from object, maybe an unsupported API?')
+                return '';
+            }
             function getId(href){
                 var id = '';
-                if (!!href && href.indexOf('?v=') > 0){
-                    id = getBefore(href.split('?v=')[1],'&');
+                if (!!href && href.indexOf('www.youtube.com/v/') > 0) {
+                    id = getBefore(href.split('www.youtube.com/v/')[1], '?')
                 } else if (!!href && href.indexOf('/embed/') > 0){
                     id = getBefore(href.split('/embed/')[1], '?');
+                } else if (!!href && href.indexOf('?v=') > 0){// this could be version if API call!!
+                    id = getBefore(href.split('?v=')[1],'&');
                 } else if (!!href && href.indexOf('video:') > 0){
                     id = getBefore(href.split('video:')[1], ':');
                 } else if (!!href){
@@ -116,10 +138,15 @@
             }
             function getVideosFromFeed(data){
                 var videos = [],
-                    items = (data && data.feed && data.feed.entry) ? data.feed.entry : (data && data.data && data.data.items) ? data.data.items : [];
+                    items = (data && data.data && data.data.items) ? data.data.items
+                       : (data && data.feed && data.feed.entry) ? data.feed.entry : [];
                 $( items ).each(function(i, item){
+                    var id = getIdFromEntry(item);
+                    if (id == 2 ){
+                        console.log( item )
+                    }
                     videos.push({
-                        id: getId(item.id.$t || item.id),
+                        id: getIdFromEntry(item),
                         title: item.title.$t || item.title
                     });
                 });
@@ -140,7 +167,8 @@
                 getIframeTemplate:getIframeTemplate,
                 getTitleStyle:getTitleStyle,
                 getStyle:getStyle,
-                getVideosFromFeed:getVideosFromFeed
+                getVideosFromFeed:getVideosFromFeed,
+                getIdFromEntry:getIdFromEntry
             };
             function load($this, options) {
                 var videos = ( options.videos.length ) ? options.videos : getVideoLinks($this),
@@ -251,9 +279,7 @@
                             });
                         })
                         .fail(function(){
-                            if ('console' in window && window.console.log){
-                                window.console.log('Error getting youtube API requested by jQuery.youtubeVideoGallery: '+ apiUrl);
-                            }
+                            log('Error getting youtube API requested by jQuery.youtubeVideoGallery: '+ apiUrl);
                         });
                 return $this;
             }

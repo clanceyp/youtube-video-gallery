@@ -15,7 +15,7 @@
 <body>
 <h1>Default display</h1>
 <div id="test">
-    <h2>Video gallery 1</h2>
+    <h2>Video gallery - from hardcoded HTML UL</h2>
     <p>Uses it's own built in basic lightbox display</p>
     <pre>$(document).ready(function(){
     $("ul.youtube-videogallery").youtubeVideoGallery(  );
@@ -33,7 +33,7 @@
     </ul>
 
 
-    <h2>Video gallery 2</h2>
+    <h2>Video gallery - from API</h2>
     <p>Import a group of videos from youtube API, set fallback URL for accessibility, SEO etc...</p>
     <pre>$(document).ready(function(){
     $("ul.youtube-videogallery2").youtubeVideoGallery( {
@@ -41,7 +41,16 @@
         apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=dance+tango&orderby=published&start-index=1&alt=json&max-results=10&v=2'
      });
 });</pre>
-    <ul class="youtube-videogallery2">
+    <h3>search</h3>
+    <ul class="youtube-videogallery-search">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+    <h3>user</h3>
+    <ul class="youtube-videogallery-user">
+        <li><a href="http://youtube.com">Youtube</a></li>
+    </ul>
+    <h3>playlist</h3>
+    <ul class="youtube-videogallery-playlist">
         <li><a href="http://youtube.com">Youtube</a></li>
     </ul>
 </div>
@@ -50,9 +59,17 @@
     $(document).ready(function(){
         $("ul.youtube-videogallery").youtubeVideoGallery(  );
 
-        $("ul.youtube-videogallery2").youtubeVideoGallery({
+        $("ul.youtube-videogallery-search").youtubeVideoGallery({
             apiFallbackUrl: 'https://www.youtube.com/results?search_query=football+soccer',
-            apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=football+-soccer&orderby=published&start-index=1&alt=json&max-results=10&v=2'
+            apiUrl: 'https://gdata.youtube.com/feeds/api/videos?q=football+-soccer&orderby=published&start-index=1&alt=json&max-results=6&v=2'
+        });
+        $("ul.youtube-videogallery-user").youtubeVideoGallery({
+            apiFallbackUrl: 'http://www.youtube.com/user/mayarcade',
+            apiUrl:'http://gdata.youtube.com/feeds/api/users/mayarcade/uploads?v=2&alt=jsonc&max-results=6'
+        });
+        $("ul.youtube-videogallery-playlist").youtubeVideoGallery({
+            apiFallbackUrl: 'http://www.youtube.com/playlist?list=PLdLRpN7S7Ubw-OQI7MS04NuYpXHadH6xc',
+            apiUrl:'http://gdata.youtube.com/feeds/api/playlists/PLdLRpN7S7Ubw-OQI7MS04NuYpXHadH6xc?alt=json&start-index=1&max-results=6&v=2'
         });
     });
 </script>

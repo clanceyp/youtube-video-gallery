@@ -1,8 +1,8 @@
 {
 	"name": "youtubevideogallery",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"title": "Youtube video gallery",
-    "description": "An simple video gallery for youtube.",
+    "description": "A simple video gallery for youtube, converts a list of Youtube links into a gallery, can load a search, user or playlist from Youtube API. Optional, use the fancybox or colorbox plugins to display videos nicely",
 	"author": {
 		"name": "Patrick Clancey",
         "email": "clanceyp@gmail.com",

@@ -4,7 +4,7 @@
  *
  * @author clanceyp
  * @see http://plugins.jquery.com/youtubevideogallery/
- * @version 1.2.1
+ * @version 1.2.2
  *
  */
 
@@ -14,7 +14,7 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '1.2.1',
+            var version = '1.2.2',
                 defaults = {
                     assetFolder : '',
                     fancybox : {

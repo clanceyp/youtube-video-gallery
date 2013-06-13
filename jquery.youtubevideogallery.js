@@ -1,9 +1,20 @@
-(function($) {
+/**
+ * youtubeVideoGallery plugin for jquery
+ * Simple video gallery for youtube, for more details see http://plugins.jquery.com/youtubevideogallery
+ *
+ * @author clanceyp
+ * @see http://plugins.jquery.com/youtubevideogallery/
+ * @version 1.1.1
+ *
+ */
+
+
+;(function($) {
 "use strict";
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '0.0.1',
+            var version = '1.1.1',
                 defaults = {
                     assetFolder : '',
                     fancybox : {
@@ -114,7 +125,14 @@
                 });
                 return videos;
             }
-
+            /**
+             * this.test = object
+             *
+             * Test object to expose private methods to a test API.
+             * This allows us to test private methods, without
+             * exposing them (e.g. they can't be overwritten)
+             *
+             */
             this.test = {
                 getBefore:getBefore,
                 getId:getId,

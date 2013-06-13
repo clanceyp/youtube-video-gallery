@@ -4,7 +4,7 @@
  *
  * @author clanceyp
  * @see http://plugins.jquery.com/youtubevideogallery/
- * @version 1.1.1
+ * @version 1.2.0
  *
  */
 
@@ -14,7 +14,7 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '1.1.1',
+            var version = '1.2.0',
                 defaults = {
                     assetFolder : '',
                     fancybox : {
@@ -154,7 +154,7 @@
                 img.onerror = function(){
                     setButtonMargin(0, 0, $this);
                 };
-                img.src = playButtonSrc;
+                img.src = playButtonSrc+'?'+ +(new Date());
 
                 for (var i = 0, l = videos.length; i < l; i++){
                     video = videos[i];
@@ -231,6 +231,7 @@
                     apiUrl = options.apiUrl,
                     jqxhr = $.ajax({
                         url:apiUrl,
+                        dataType:"jsonp",
                         beforeSend:function(){
                             if (!options.apiFallbackUrl){
                                 return;

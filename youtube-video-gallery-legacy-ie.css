@@ -10,6 +10,7 @@ a.youtube-videogallery-link {
     *display: inline;
     filter : progid:DXImageTransform.Microsoft.Shadow(Direction=135, Strength=3, Color='#333333');
 }
+
 a.youtube-videogallery-link:hover img.youtube-videogallery-play,
 a.youtube-videogallery-link:focus img.youtube-videogallery-play {
 
@@ -18,11 +19,12 @@ a.youtube-videogallery-link:focus img.youtube-videogallery-play {
 
 }
 body *.youtube-videogallery-title {
-    background-color: #000;
     border-top: 0 none;
     border-bottom:1px solid #000;
     color:#fff;
     display: inline-block;
+    height: 20px;
+    overflow: hidden;
     width: 100%;
 }
 body.youtube-videogallery-legacy-ie div.youtube-videogallery-bodycover {

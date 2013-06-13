@@ -142,9 +142,6 @@
                        : (data && data.feed && data.feed.entry) ? data.feed.entry : [];
                 $( items ).each(function(i, item){
                     var id = getIdFromEntry(item);
-                    if (id == 2 ){
-                        console.log( item )
-                    }
                     videos.push({
                         id: getIdFromEntry(item),
                         title: item.title.$t || item.title

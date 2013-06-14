@@ -4,7 +4,7 @@
  *
  * @author clanceyp
  * @see http://plugins.jquery.com/youtubevideogallery/
- * @version 1.2.3
+ * @version 1.3.0
  *
  */
 
@@ -14,7 +14,8 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '1.2.3',
+            var version = '1.3.0',
+                isLegacyIE = (/\bMSIE [4|5|6|7]/.test(navigator.userAgent)),
                 defaults = {
                     assetFolder : '',
                     fancybox : {
@@ -27,6 +28,7 @@
                         },
                         openEffect : 'fade'
                     },
+                    forceLegacyIE:false,
                     iframeTemplate:'<iframe title="Youtube video player" id="youtube-videogallery-iframe" style="height:{options.innerHeight}px;width:{options.innerWidth}px;" frameborder="0" src="about:blank" />',
                     innerHeight:344,
                     innerWidth:425,
@@ -234,12 +236,16 @@
 
             }
 
+            // Set options
             options =  $.extend(defaults, options);
             options.supported = (
             /* don't show lightbox if: old untested jquery version, or the lightbox is bigger than the viewport */
                     !!$().on &&
                     ( $(window).width() > options.innerWidth || $(window).height() > options.innerHeight)
                 );
+            options.plugin = (isLegacyIE && !options.forceLegacyIE) ? 'none' : options.plugin;// by default turn off plugins for IE<=7
+
+            // it's an API, load promise and return the original object for chaining
             if (!!options.apiUrl){
                 var $this = this,
                     apiUrl = options.apiUrl,

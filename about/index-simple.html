@@ -4,11 +4,11 @@
     <meta charset='utf-8' />
     <meta name="description" content="Youtube video gallery plugin for jquery >= 1.9" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="jquery.youtubevideogallery.js"></script>
-    <link rel="stylesheet" href="youtube-video-gallery.css" type="text/css"/>
-    <link rel="stylesheet" href="test/test.css" type="text/css"/>
+    <script src="../jquery.youtubevideogallery.js"></script>
+    <link rel="stylesheet" href="../youtube-video-gallery.css" type="text/css"/>
+    <link rel="stylesheet" href="../test/test.css" type="text/css"/>
     <!--[if lt IE 9]>
-    <link href="youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
+    <link href="../youtube-video-gallery-legacy-ie.css" type="text/css" rel="stylesheet"/>
     <![endif]-->
     <title>Youtube video gallery for jquery</title>
 </head>
@@ -35,7 +35,7 @@
 
 <script>
     $(document).ready(function(){
-        $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'none'} );
+        $("ul.youtube-videogallery").youtubeVideoGallery( {plugin:'none',assetFolder:'../'} );
     });
 </script>
 </body>

@@ -32,6 +32,20 @@
         <li><a href="http://www.youtube.com/watch?v=0Yww2VhbFL8">Tango!</a></li>
     </ul>
 
+    <h2>Display compact</h2>
+        <pre>$(document).ready(function(){
+    $("ul.youtube-videogallery").youtubeVideoGallery( {style:'compact',title:'none'} );
+});</pre>
+    <div style="background-color: #000; padding: 8px;border-radius: 8px;height: 230px;width:450px">
+    <ul class="youtube-videogallery-compact">
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+        <li><a href="http://www.youtube.com/watch?v=UCOC1YwNwZw">Call me gordie</a></li>
+    </ul>
+    </div>
 
     <h2>Video gallery - from API</h2>
     <p>Import a group of videos from youtube API, set fallback URL for accessibility, SEO etc...</p>
@@ -58,6 +72,13 @@
 <script>
     $(document).ready(function(){
         $("ul.youtube-videogallery").youtubeVideoGallery( {assetFolder:'../'} );
+
+        $("ul.youtube-videogallery-compact").youtubeVideoGallery( {
+                assetFolder:'../',
+                style:'compact',
+                title:'none'
+            }
+        );
 
         $("ul.youtube-videogallery-search").youtubeVideoGallery({
             apiFallbackUrl: 'https://www.youtube.com/results?search_query=football+soccer',

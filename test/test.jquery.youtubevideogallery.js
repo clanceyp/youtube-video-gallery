@@ -53,8 +53,9 @@ test( "Get iframe template", function() {
 
 
 test( "Get getTitleStyle", function() {
-    ok( jQuery().youtubeVideoGallery().test.getTitleStyle( true ) === 'youtube-videogallery-allowtitle', "Passed" );
-    ok( jQuery().youtubeVideoGallery().test.getTitleStyle( false ) === '', "Passed" );
+    ok( jQuery().youtubeVideoGallery().test.getTitleStyle( 'full' ) === 'youtube-videogallery-allowtitle', "Passed" );
+    ok( jQuery().youtubeVideoGallery().test.getTitleStyle( 'none' ) === '', "Passed" );
+    ok( jQuery().youtubeVideoGallery().test.getTitleStyle( 'default' ) === '', "Passed" );
 });
 
 test( "Get getStyle", function() {

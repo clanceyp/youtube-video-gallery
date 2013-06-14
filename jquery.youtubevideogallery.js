@@ -35,10 +35,9 @@
                     newWindow: '(opens in a new window)',
                     playButton: 'play-button-red@40.png',
                     plugin:'self',
-                    showTitle:true,
                     style:'',
+                    title:'default',
                     thumbWidth:150,
-                    titleLimit:true,
                     videos:[],
                     urlImg : 'http://img.youtube.com/vi/$id/0.jpg',
                     urlEmbed : 'http://www.youtube.com/embed/$id',
@@ -135,8 +134,8 @@
                 }
                 return '';
             }
-            function getTitleStyle(allow){
-                return allow ? 'youtube-videogallery-allowtitle' : '';
+            function getTitleStyle(title){
+                return title === 'full' ? 'youtube-videogallery-allowtitle' : '';
             }
             function getVideosFromFeed(data){
                 var videos = [],
@@ -188,7 +187,7 @@
                     if (!video.id){continue;}
                     href = options.urlLink.replace("$id", video.id);
                     src = options.urlImg.replace("$id", video.id);
-                    titleSpan = (!!video.title && options.showTitle) ? '<span class="youtube-videogallery-title">'+ video.title +'</span>' : '';
+                    titleSpan = (!!video.title && options.title !== 'none') ? '<span class="youtube-videogallery-title">'+ video.title +'</span>' : '';
 
                     html+= '<li class="youtube-videogallery-item"><a title="'+video.title+'" data-youtube-id="'+ video.id +'" href="'+ href +'" class="youtube-videogallery-link" style="width:'+options.thumbWidth+'px"><img class="youtube-videogallery-play" src="'+ playButtonSrc +'" title="play" /><img class="youtube-videogallery-img" src="'+ src +'" style="width:'+options.thumbWidth+'px" />'+ titleSpan +'</a></li>';
                 }
@@ -196,7 +195,7 @@
                     .append(html)
                     .addClass('youtube-videogallery-container')
                     .addClass( getStyle( options.style ) )
-                    .addClass( getTitleStyle( options.titleLimit ) );
+                    .addClass( getTitleStyle( options.title ) );
 
                 if (options.supported && options.plugin === 'colorbox' && $.colorbox){
                     $this.find("a.youtube-videogallery-link").each(function(i, el){

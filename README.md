@@ -1,5 +1,7 @@
 # Youtube video gallery
 
+See http://clanceyp.github.io/youtube-video-gallery for more info.
+
 This is a very simple plugin to display a group of youtube video links as a gallery.
 
 If you are using the colorbox or fancybox plugins, this extension will use it and display the videos in a light box.

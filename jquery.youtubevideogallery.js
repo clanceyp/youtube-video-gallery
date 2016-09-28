@@ -4,7 +4,7 @@
  *
  * @author clanceyp
  * @see http://plugins.jquery.com/youtubevideogallery/
- * @version 1.3.0
+ * @version 1.3.1
  *
  */
 
@@ -14,7 +14,7 @@
 
     $.fn.extend({
         youtubeVideoGallery:function(options) {
-            var version = '1.3.0',
+            var version = '1.3.1',
                 isLegacyIE = (/\bMSIE [4|5|6|7]/.test(navigator.userAgent)),
                 defaults = {
                     assetFolder : '',

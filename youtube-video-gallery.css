@@ -58,7 +58,7 @@ a.youtube-videogallery-link:focus img.youtube-videogallery-play {
     z-index: 1;
 }
 *.youtube-videogallery-allowtitle *.youtube-videogallery-title {
-    height: auto;
+    max-height: 100%;
 }
 *.youtube-videogallery-img {
 	border-radius: 5px;
